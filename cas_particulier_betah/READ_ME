@@ -1,0 +1,11 @@
+Les differents elements sont a lancer dans un ordre particulier.
+
+Les fichiers stepbystepgamma ou alpha représentent un réplicat pour un jeu de paramètres donné. 
+
+Dans un premier temps, il va falloir créer les dossiers. Pour se faire, on exécute la commande " source("creation_fichiers.R") " sous R. Ensuite, source("creation_lancement_alpha.R") et source("creation_lancement_gamma.R") vont permettre de créer deux fichiers .sh (en shell) qui serviront à lancer chacune des différentes simulations d'un seul coup 
+
+A ce stade, tout est paré : ne reste qu'à lancer dans le bon ordre. On exécute les script de lancement de alpha et gamma créés juste au dessus (/!\ : script en .shell). En parallèle, on exécute run_job_boots.sh (nécessite le Scheduler SGE (sun grid engine) utilisé sur le cluster de calcul du laboratoire EDB pendant le stage. Il est possible d'exécuter via R les fichiers res_poly_gamma.R et res_poly_alpha.R), qui fait la résolution du cas où les résistances s'expriment uniquement sur beta et qui va servir pour la création des figures. 
+
+Une fois tout lancé, il ne reste qu'à attendre. Une fois que tout a fini de s'exécuter et que tout s'est bien déroulé, on envoie le run_job_verif.sh (nécessite Scheduler : SGE (sun grid engine), sinon l'exécution peut se faire via R en exécutant le fichier verif_replicats.R). Il vérifie si on est à l'équilibre évolutif, si les réplicats donnent les mêmes résultats, et va synthétiser les résultats dans une figure (cf lire_les_resultats).
+
+Bonne exécution !
